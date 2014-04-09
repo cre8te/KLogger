@@ -136,7 +136,13 @@ class Logger extends AbstractLogger
      */
     public function log($level, $message, array $context = array())
     {
-        if ($this->logLevels[$this->logLevelThreshold] < $this->logLevels[$level]) {
+        if(in_array($level, $this->logLevels)){
+          $lvl = $this->logLevels[$level];
+        } else {
+          $lvl = 7;
+        }
+
+        if ($this->logLevels[$this->logLevelThreshold] < $lvl) {
             return;
         }
         $message = $this->formatMessage($level, $message, $context);        
