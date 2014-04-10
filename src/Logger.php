@@ -147,6 +147,8 @@ class Logger extends AbstractLogger
         }
         $message = $this->formatMessage($level, $message, $context);        
         $this->write($message);
+
+        return $message;
     }
 
     /**
